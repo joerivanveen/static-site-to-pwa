@@ -1,0 +1,145 @@
+.pwa_button {
+	display: block;
+	position: fixed;
+	left: 40px;
+	bottom: 40px;
+	width: 50px;
+	height: 50px;
+	z-index: 100000;
+	border-radius: 2px;
+	cursor: pointer;
+	background-color: #f9f9fb;
+	color: #000;
+	font-weight: normal;
+	font-family: Arial, helvetica, sans-serif;
+}
+
+#pwa_cache_button:after {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-28 -28 122 122' version='1.0'%3E%3Cpath style='stroke-linejoin:round;stroke:%23fff;stroke-linecap:round;stroke-width:8.125;fill:none' d='M7.682 4.686a2.068 2.068 0 0 0-2.073 2.073V53.24c0 1.149.924 2.073 2.073 2.073h44.636a2.068 2.068 0 0 0 2.073-2.073V11.52l-6.867-6.835H7.682z'/%3E%3Cpath style='stroke-linejoin:round;fill-rule:evenodd;stroke-linecap:round;fill:%23fff' transform='translate(-1 -1.598) scale(1.0365)' d='M8.375 6.063c-1.108 0-2 .892-2 2v44.843c0 1.109.892 2 2 2h43.063c1.108 0 2-.891 2-2v-40.25l-6.626-6.593H8.375z'/%3E%3Cpath style='stroke-linejoin:round;fill-rule:evenodd;stroke:%23000;stroke-linecap:round;stroke-width:2.5551;fill:%23fff' transform='matrix(-.97845 0 0 .97845 56.94 .252)' d='M15.914 4.66V17.9c0 1.353 1.188 2.442 2.665 2.442h17.908c1.477 0 2.666-1.089 2.666-2.442V4.66'/%3E%3Cpath style='stroke-linejoin:round;fill-rule:evenodd;stroke-linecap:round;stroke-width:1.25;fill:%23000' transform='matrix(-.97845 0 0 .97845 56.94 .252)' d='M20.916 7.98c-.775 0-1.4.625-1.4 1.4v6.243c0 .775.625 1.399 1.4 1.399h3.788c.776 0 1.4-.624 1.4-1.399V9.38c0-.775-.624-1.4-1.4-1.4h-3.788z'/%3E%3Cpath style='stroke-linejoin:round;stroke:%23000;stroke-linecap:round;stroke-width:3.0148;fill:none' transform='translate(-1 -1.598) scale(1.0365)' d='M8.375 6.063c-1.108 0-2 .892-2 2v44.843c0 1.109.892 2 2 2h43.063c1.108 0 2-.891 2-2v-40.25l-6.626-6.593H8.375z'/%3E%3Cpath style='stroke-linejoin:round;fill-rule:evenodd;stroke-linecap:round;stroke-width:1.25;fill:%23000' transform='translate(.431 .252) scale(.97845)' d='M12.659 25.288a2.03 2.03 0 0 0-2.035 2.035V49.31a2.03 2.03 0 0 0 2.035 2.035h35.122a2.031 2.031 0 0 0 2.035-2.035V27.323a2.031 2.031 0 0 0-2.035-2.035H12.659z'/%3E%3C/svg%3E");
+	opacity: .7;
+}
+#pwa_cache_button.caching:after {
+	animation: pulsate 1s infinite;
+}
+#pwa_cache_button.cached:after {
+	content: url("data:image/svg+xml,%3Csvg style='width:24px;height:24px;margin:12px;fill:%23080;' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M21 6.285l-11.16 12.733-6.84-6.018 1.319-1.49 5.341 4.686 9.865-11.196 1.475 1.285z'/%3E%3C/svg%3E");
+}
+@keyframes pulsate {
+	0% {
+		opacity: .7;
+	}
+	33% {
+		opacity: 1;
+	}
+	67% {
+		opacity: .4;
+	}
+}
+
+#pwa_caches_list {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100002;
+	overflow-y: auto;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+}
+[data-pwa-offline-menu] #pwa_caches_list {
+	display: block;
+}
+[data-pwa-offline-menu] {
+	overflow: hidden;
+}
+#pwa_caches_list * {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+#pwa_caches_list ul {
+	padding: 0;
+	margin: 0;
+}
+#pwa_caches_list li {
+	list-style: none;
+	line-height: 2.2em;
+	margin: 0;
+	padding: 0 0 0 12px;
+	border-bottom: solid 1px #ddd;
+}
+#pwa_caches_list li.close {
+	font-weight: bold;
+	font-size: 200%;
+	padding-left: 12px;
+	cursor: pointer;
+}
+#pwa_caches_list a {
+	padding: .1em;
+	margin: 0;
+	display: inline-block;
+	width: 81vw;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+}
+#pwa_caches_list button {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	font-size: 12px;
+	margin: 2px;
+	color: #fff;
+	background-color: #c66;
+	border: none;
+	outline: none;
+	outline-offset: -1px;
+}
+
+#pwa_offline_manual_button {
+	width: auto;
+	min-width: 50px;
+	transition: opacity 250ms ease-in-out;
+}
+#pwa_cache_button + #pwa_offline_manual_button {
+	left: 100px;
+}
+#pwa_offline_manual_button span {
+	display: inline-block;
+	height: 16px;
+	font-size: 14px;
+	margin: 17px 12px;
+}
+
+#pwa_progress_wrapper {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #fff;
+	border-top: solid 1px #333;
+}
+#pwa_progress_wrapper .pwa_progress_bar {
+	display: block;
+	height: 2em;
+}
+#pwa_progress_wrapper span {
+	display: block;
+	position: absolute;
+	padding: .5em;
+}
+#pwa_progress_wrapper span.percentage {
+	right: .5em;
+}
+
+#offline_body img,
+#offline_body {
+	margin: .56rem;
+	font-family: Arial, sans-serif;
+	font-size: 1rem;
+}
+#offline_body header {
+	height: 92px;
+	margin: -.56rem;
+}
