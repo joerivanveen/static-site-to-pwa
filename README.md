@@ -33,6 +33,8 @@ Replace: <script src="/pwa/front.js?v=1.0.0" data-root="https://www.ruigehond.nl
 ```
 Please note: The version parameter is mandatory. Data-root is also mandatory and must contain the correct protocol + domain + portnumber (not necessary when default) of your website, without trailing slash.
 
+The `cache_this_folder.txt` file is mentioned in the `make_pwa.vbs` as a trigger for the download ability, you can change the name there if you want to use a different trigger file.
+
 ### Indexing your site for the pwa
 Now drop the root folder of your static site on the `make_pwa.vbs` script. This will index your site and write `assets.js` to the pwa folder in it. Please wait for the confirmation.
 
@@ -44,7 +46,7 @@ Every time you want to publish changes to your website, you need to update the p
 1. Make sure the correct script (front.js) is present in all new files that will be served to the visitor.
 2. Update the version string, e.g. search `/pwa/front.js?v=1.0.0` and replace with `/pwa/front.js?v=1.0.1`. You need to update the version in ALL the files.
 
-Upload your entire site to the ftp location. This is necessary for the cache to be managed appropriately.
+(Re-)upload your entire site to the ftp location, not just the changes. This is necessary for the cache to be managed appropriately.
 
 ### Cool static pwa
 When you change the name or location of a folder that is cached, this will invalidate the cache and after a version bump it will be removed from any client that saved it.
